@@ -52,14 +52,14 @@ app.use('/',routes);
 
 // ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "views", "build")))
-
-	app.use(express.static(views/build))
+if(process.env.NODE_ENV === 'production'){
+	app.use(express.static("views/build"))
 
 	app.get("*", (req, res) => {
    	 res.sendFile(path.resolve(__dirname, "views", "build", "index.html"));
 	});
 	
-
+}
 // ...
 // Right before your app.listen(), add this:
 
