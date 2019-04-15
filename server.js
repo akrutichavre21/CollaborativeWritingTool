@@ -47,5 +47,17 @@ app.use('/',routes);
 
 //})
 
+// ... other imports 
+const path = require("path")
+
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "views", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "build", "index.html"));
+});
+
 //listening for requests
 app.listen(process.env.port || 8080);//process.env.port for heroku
