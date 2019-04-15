@@ -45,7 +45,7 @@
     "seed": "nodemon scripts/seedDB.js",
     "install": "cd views && npm install",
     "build": "cd views && npm start",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix views && npm run build --prefix views",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
